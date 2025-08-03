@@ -31,7 +31,7 @@ const Invoices = () => {
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
         {invoice.invoiceNumber}
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
         {invoice.projectName}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -44,7 +44,7 @@ const Invoices = () => {
           {INVOICE_STATUS_CONFIG[invoice.status].label}
         </span>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
         {new Date(invoice.dueDate).toLocaleDateString()}
       </td>
     </tr>
@@ -52,8 +52,6 @@ const Invoices = () => {
 
   return (
     <div className="p-6 h-full flex flex-col">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Invoices</h1>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <StatsCard title="Total Paid">
           <p className="text-2xl font-semibold text-green-600">

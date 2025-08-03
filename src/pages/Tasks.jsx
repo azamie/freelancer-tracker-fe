@@ -80,8 +80,6 @@ const Tasks = () => {
 
   return (
     <div className="p-6 h-full flex flex-col">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Tasks</h1>
-
       <div className="mb-6 bg-white p-4 rounded-lg shadow">
         <h3 className="text-sm font-medium text-gray-900 mb-3">
           Filter by Projects

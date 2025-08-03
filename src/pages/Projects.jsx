@@ -40,8 +40,6 @@ const Projects = () => {
 
   return (
     <div className="p-6 h-full flex flex-col">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Projects</h1>
-
       <div
         className="bg-white shadow rounded-lg flex-1 overflow-auto scrollbar-hide"
         id="projects-scroll-container"
