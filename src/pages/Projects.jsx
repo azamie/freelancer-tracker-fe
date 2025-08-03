@@ -1,46 +1,11 @@
 import { useProjects } from 'hooks/use-projects.js';
 import InfiniteScrollList from 'components/InfiniteScrollList.jsx';
+import { formatDate } from 'utils/date.js';
+import { PROJECT_STATUS_CONFIG } from 'constants/project.js';
 
 export default function Projects() {
   const queryResult = useProjects();
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'UNSTARTED':
-        return 'bg-gray-100 text-gray-800';
-      case 'IN_PROGRESS':
-        return 'bg-blue-100 text-blue-800';
-      case 'ON_HOLD':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'COMPLETED':
-        return 'bg-green-100 text-green-800';
-      case 'CANCELLED':
-        return 'bg-red-100 text-red-800';
-    }
-  };
-
-  const getStatusLabel = (status) => {
-    switch (status) {
-      case 'UNSTARTED':
-        return 'Unstarted';
-      case 'IN_PROGRESS':
-        return 'In Progress';
-      case 'ON_HOLD':
-        return 'On Hold';
-      case 'COMPLETED':
-        return 'Completed';
-      case 'CANCELLED':
-        return 'Cancelled';
-    }
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
-  };
 
   const renderProject = (project) => (
     <div key={project.id} className="p-6">
@@ -50,9 +15,9 @@ export default function Projects() {
             {project.name}
           </h3>
           <span
-            className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(project.status)}`}
+            className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${PROJECT_STATUS_CONFIG[project.status].color}`}
           >
-            {getStatusLabel(project.status)}
+            {PROJECT_STATUS_CONFIG[project.status].label}
           </span>
         </div>
       </div>
@@ -75,10 +40,13 @@ export default function Projects() {
   );
 
   return (
-    <div className="p-6">
+    <div className="p-6 h-full flex flex-col">
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Projects</h1>
 
-      <div className="bg-white shadow rounded-lg">
+      <div
+        className="bg-white shadow rounded-lg flex-1 overflow-auto scrollbar-hide"
+        id="projects-scroll-container"
+      >
         <InfiniteScrollList
           items={queryResult.projects}
           fetchNextPage={queryResult.fetchNextPage}
@@ -90,6 +58,7 @@ export default function Projects() {
           loadingText="Loading projects..."
           loadingMoreText="Loading more projects..."
           endMessage="No more projects to load"
+          scrollableTarget="projects-scroll-container"
         />
       </div>
     </div>

@@ -12,6 +12,7 @@ export default function InfiniteScrollList({
   loadingMoreText = 'Loading more...',
   endMessage = 'No more items to load',
   className = '',
+  scrollableTarget,
 }) {
   if (error) {
     return (
@@ -38,7 +39,7 @@ export default function InfiniteScrollList({
           </div>
         )
       }
-      scrollThreshold={0.9}
+      scrollableTarget={scrollableTarget}
       className={className}
     >
       <div className="divide-y divide-gray-200">
