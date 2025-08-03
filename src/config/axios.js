@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { camelizeKeys, decamelizeKeys } from 'humps';
 import settings from 'config/settings.js';
+import { refreshToken } from 'apis/authentication.js';
+import { isTokenExpiring } from 'utils/authentication';
 
 const decamelizeKeysRequest = (config) => {
   if (config.data) {
@@ -28,6 +30,7 @@ const camelizeKeysError = (error) => {
 
 export const publicAxios = axios.create({
   baseURL: settings.apiBaseUrl,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -44,5 +47,32 @@ export const authAxios = axios.create({
   },
 });
 
-authAxios.interceptors.request.use(decamelizeKeysRequest);
+const authRequestInterceptor = async (config) => {
+  if (isTokenExpiring(5, 'access') && !isTokenExpiring(0, 'refresh')) {
+    try {
+      const response = await refreshToken();
+      if (response.accessTokenExpiresAt) {
+        localStorage.setItem(
+          'accessTokenExpiresAt',
+          response.accessTokenExpiresAt,
+        );
+      }
+      if (response.refreshTokenExpiresAt) {
+        localStorage.setItem(
+          'refreshTokenExpiresAt',
+          response.refreshTokenExpiresAt,
+        );
+      }
+    } catch (error) {
+      console.error('Token refresh failed:', error);
+      localStorage.removeItem('accessTokenExpiresAt');
+      localStorage.removeItem('refreshTokenExpiresAt');
+      window.location.href = '/login';
+    }
+  }
+
+  return decamelizeKeysRequest(config);
+};
+
+authAxios.interceptors.request.use(authRequestInterceptor);
 authAxios.interceptors.response.use(camelizeKeysResponse, camelizeKeysError);
