@@ -80,9 +80,7 @@ const Tasks = () => {
 
   return (
     <div className="p-6 h-full flex flex-col">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Tasks</h1>
-      </div>
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Tasks</h1>
 
       <div className="mb-6 bg-white p-4 rounded-lg shadow">
         <h3 className="text-sm font-medium text-gray-900 mb-3">

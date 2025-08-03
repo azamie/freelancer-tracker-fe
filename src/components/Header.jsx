@@ -5,6 +5,7 @@ const pageNames = {
   '/projects': 'Projects',
   '/tasks': 'Tasks',
   '/invoices': 'Invoices',
+  '/activities': 'Activities',
 };
 
 const Header = () => {

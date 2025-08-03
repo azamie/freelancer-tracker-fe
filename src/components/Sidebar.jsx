@@ -7,6 +7,7 @@ import {
   MdFolder,
   MdCheckBox,
   MdAttachMoney,
+  MdTimeline,
 } from 'react-icons/md';
 
 const navigation = [
@@ -14,6 +15,7 @@ const navigation = [
   { name: 'Projects', href: '/projects', icon: MdFolder },
   { name: 'Tasks', href: '/tasks', icon: MdCheckBox },
   { name: 'Invoices', href: '/invoices', icon: MdAttachMoney },
+  { name: 'Activities', href: '/activities', icon: MdTimeline },
 ];
 
 const Sidebar = () => {

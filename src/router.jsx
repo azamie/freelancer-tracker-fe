@@ -1,4 +1,5 @@
 import {
+  ACTIVITIES_PATH,
   DASHBOARD_PATH,
   INVOICES_PATH,
   PROJECTS_PATH,
@@ -14,6 +15,7 @@ import Dashboard from 'pages/Dashboard';
 import Projects from 'pages/Projects';
 import Tasks from 'pages/Tasks';
 import Invoices from 'pages/Invoices';
+import Activities from 'pages/Activities';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: INVOICES_PATH,
         element: <Invoices />,
+      },
+      {
+        path: ACTIVITIES_PATH,
+        element: <Activities />,
       },
     ],
   },
