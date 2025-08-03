@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import LoadingSpinner from './LoadingSpinner.jsx';
 
-export default function InfiniteScrollList({
+const InfiniteScrollList = ({
   items,
   fetchNextPage,
   hasNextPage,
@@ -13,7 +13,7 @@ export default function InfiniteScrollList({
   endMessage = 'No more items to load',
   className = '',
   scrollableTarget,
-}) {
+}) => {
   if (error) {
     return (
       <div className="p-6 text-center text-red-600">
@@ -47,4 +47,6 @@ export default function InfiniteScrollList({
       </div>
     </InfiniteScroll>
   );
-}
+};
+
+export default InfiniteScrollList;

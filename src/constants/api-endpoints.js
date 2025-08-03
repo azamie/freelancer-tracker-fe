@@ -7,3 +7,4 @@ export const REFRESH_ENDPOINT = `${AUTHENTICATION_ENDPOINT}refresh/`;
 // PROJECTS
 export const PROJECTS_ENDPOINT = '/api/projects/';
 export const TASKS_ENDPOINT = `${PROJECTS_ENDPOINT}tasks/`;
+export const INVOICES_ENDPOINT = `${PROJECTS_ENDPOINT}invoices/`;

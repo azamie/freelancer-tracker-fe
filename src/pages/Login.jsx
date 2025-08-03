@@ -12,7 +12,7 @@ const loginSchema = yup.object({
   password: yup.string().required('Password is required'),
 });
 
-export default function Login() {
+const Login = () => {
   const loginMutation = useLogin();
 
   const {
@@ -83,4 +83,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;

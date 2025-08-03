@@ -3,9 +3,8 @@ import InfiniteScrollList from 'components/InfiniteScrollList.jsx';
 import { formatDate } from 'utils/date.js';
 import { PROJECT_STATUS_CONFIG } from 'constants/project.js';
 
-export default function Projects() {
+const Projects = () => {
   const queryResult = useProjects();
-
 
   const renderProject = (project) => (
     <div key={project.id} className="p-6">
@@ -63,4 +62,6 @@ export default function Projects() {
       </div>
     </div>
   );
-}
+};
+
+export default Projects;

@@ -7,7 +7,7 @@ const pageNames = {
   '/invoices': 'Invoices',
 };
 
-export default function Header() {
+const Header = () => {
   const location = useLocation();
   const pageName = pageNames[location.pathname] || 'Page';
 
@@ -18,4 +18,6 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+
+export default Header;

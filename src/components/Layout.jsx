@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 import Sidebar from './Sidebar.jsx';
 import Header from './Header.jsx';
 
-export default function Layout() {
+const Layout = () => {
   return (
     <div className="h-screen bg-gray-50 grid grid-cols-[256px_1fr] grid-rows-[64px_1fr]">
       <Sidebar />
@@ -12,4 +12,6 @@ export default function Layout() {
       </main>
     </div>
   );
-}
+};
+
+export default Layout;

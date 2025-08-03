@@ -16,7 +16,7 @@ const navigation = [
   { name: 'Invoices', href: '/invoices', icon: MdAttachMoney },
 ];
 
-export default function Sidebar() {
+const Sidebar = () => {
   const location = useLocation();
   const logoutMutation = useLogout();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,4 +100,6 @@ export default function Sidebar() {
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;

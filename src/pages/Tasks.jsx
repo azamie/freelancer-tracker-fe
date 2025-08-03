@@ -5,7 +5,7 @@ import InfiniteScrollList from 'components/InfiniteScrollList.jsx';
 import { formatDate } from 'utils/date.js';
 import { TASK_STATUS_CONFIG, TASK_TYPE_CONFIG } from 'constants/task.js';
 
-export default function Tasks() {
+const Tasks = () => {
   const [selectedProjectIds, setSelectedProjectIds] = useState([]);
   const tasksQuery = useTasks(selectedProjectIds);
   const projectsQuery = useProjects();
@@ -134,4 +134,6 @@ export default function Tasks() {
       </div>
     </div>
   );
-}
+};
+
+export default Tasks;
